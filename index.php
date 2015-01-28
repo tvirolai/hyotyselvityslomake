@@ -57,10 +57,10 @@ Voit mainita kommenttikentässä myös yleisesti kokemuksiasi Melindassa työske
 <input type="radio" name="tapaus" value="Tapaus 3"><span class="tooltip" title="Nimeke kuvaillaan tallennuspohjan päälle.">Tapaus 3</span>
 <br />
 <br />
-<span class="tooltip" title="Tämä painike käynnistää luettelointiajan mittauksen."><input type="button" value="Aloita kellotus" id="start" onclick="doTimer()" /></span>
+<input type="button" value="Aloita kellotus" id="start" onclick="doTimer()" /></span>
 <input type="hidden" id="txt" />
 <input type="hidden" id="aika" name="aika" />
-<span class="tooltip" title="Tämä nappi pysäyttää kellon."><input type="button" value="Pysäytä kellotus" id="stop" onclick="stopCount()" /></span>
+<input type="button" value="Pysäytä kellotus" id="stop" onclick="stopCount()" />
 <span class="showhide">Kellotus on käynnissä.</span>
 <script type="text/javascript">
 
