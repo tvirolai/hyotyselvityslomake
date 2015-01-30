@@ -17,10 +17,12 @@
 			$( "#start" ).click(function() {
 			  $( ".showhide" ).first().show( "fast", function showNext() {
 			  $( this ).next( "h5" ).show( "fast", showNext );
+			  $( ".showhide2" ).hide( 100 );
 				});
 			});
 			 $( "#stop" ).click(function() {
 			   $( ".showhide" ).hide( 100 );
+			   $(".showhide2").first().show("fast");
 		   });
 		});
 	</script>
@@ -62,6 +64,7 @@ Voit mainita kommenttikentässä myös yleisesti kokemuksiasi Melindassa työske
 <input type="hidden" id="aika" name="aika" />
 <input type="button" value="Pysäytä kellotus" id="stop" onclick="stopCount()" />
 <span class="showhide">Kellotus on käynnissä.</span>
+<span class="showhide2">Kellotus on pysäytetty. Aikaa on tallennettu.</span>
 <script type="text/javascript">
 
 var start = new Date().getTime(); 
