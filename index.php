@@ -10,15 +10,9 @@
 		$(document).ready(function() {
 			$('.tooltip').tooltipster({
 				theme: 'tooltipster-shadow'});
-			// $('input[type="button"]').click(function(){
-			// if(!$(this).hasClass('nappi'))
-			// $(this).addClass('nappi');
-			  //});
 			$( "#start" ).click(function() {
-			  $( ".showhide" ).first().show( "fast", function showNext() {
-			  $( this ).next( "h5" ).show( "fast", showNext );
+			  $( ".showhide" ).first().show( "fast" );
 			  $( ".showhide2" ).hide( 100 );
-				});
 			});
 			 $( "#stop" ).click(function() {
 			   $( ".showhide" ).hide( 100 );
