@@ -61,45 +61,45 @@ Voit mainita kommenttikentässä myös yleisesti kokemuksiasi Melindassa työske
 <span class="showhide2">Kellotus on pysäytetty. Aikaa on tallennettu.</span>
 <script type="text/javascript">
 
-var start = new Date().getTime(); 
-var elapsed = '0.0'; 
-var t;
-var timer_is_on=0;
+	var start = new Date().getTime(); 
+	var elapsed = '0.0'; 
+	var t;
+	var timer_is_on=0;
 
-function refreshPage() {
-	location.reload();
-}
-
-function timedCount() {
-	var time = new Date().getTime() - start;
-	elapsed = Math.floor(time / 100) / 10; 
-	if(Math.round(elapsed) == elapsed) { elapsed += '.0'; } 
-	document.getElementById('txt').value = Math.round(elapsed);
-	t=setTimeout("timedCount()",50);
-}
-
-function showElapsed() {
-	alert('Kellon lukema: ' + Math.floor(elapsed) + " s.");
-}
-
-function doTimer() {
-if (!timer_is_on) {
-    start = new Date().getTime(); 
-	timer_is_on=1;
-	timedCount();
+	function refreshPage() {
+		location.reload();
 	}
-}
 
-function stopCount() {
-	clearTimeout(t);
-	document.getElementById('aika').value = Math.floor(elapsed);
-	timer_is_on=0;
-}
+	function timedCount() {
+		var time = new Date().getTime() - start;
+		elapsed = Math.floor(time / 100) / 10; 
+		if(Math.round(elapsed) == elapsed) { elapsed += '.0'; } 
+		document.getElementById('txt').value = Math.round(elapsed);
+		t=setTimeout("timedCount()",50);
+	}
 
-function resetCount() {
-	document.getElementById('txt').value='0';
-	var elapsed = '0.0';
-}
+	function showElapsed() {
+		alert('Kellon lukema: ' + Math.floor(elapsed) + " s.");
+	}
+
+	function doTimer() {
+	if (!timer_is_on) {
+		start = new Date().getTime(); 
+		timer_is_on=1;
+		timedCount();
+		}
+	}
+
+	function stopCount() {
+		clearTimeout(t);
+		document.getElementById('aika').value = Math.floor(elapsed);
+		timer_is_on=0;
+	}
+
+	function resetCount() {
+		document.getElementById('txt').value='0';
+		var elapsed = '0.0';
+	}
 </script>
 <br /> <br />
 Kommentti (vapaaehtoinen)
