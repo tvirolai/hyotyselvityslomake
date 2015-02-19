@@ -53,11 +53,13 @@
 	function stopCount() {
 		clearTimeout(t);
 		totaltime += elapsed;
-		document.getElementById('aika').value = totaltime; // Math.round(elapsed);
+		document.getElementById('aika').value = totaltime;
 		timer_is_on=0;
 	}
 
-	function refreshPage() {
+	function tyhjaaLomake() {
+		document.getElementById("lomake").reset();
+		totaltime = 0;
 		location.reload();
 	}
 
@@ -66,8 +68,8 @@
 	}
 	
 	function validateForm() {
-		var x = document.forms["lomake"]["aineisto"].value;
-		var y = document.forms["lomake"]["tapaus"].value;
+		var x = $("[name='aineisto']:checked").val();
+		var y = $("[name='tapaus']:checked").val();
 		if (x == null || x == "" || y == null || y == "") {
 			alert("Täytä kaikki pakolliset kentät.");
 			return false;
@@ -217,7 +219,7 @@
 				<input type="button" value="Tarkista lukema" onclick="showElapsed()" />
 			</span>
 			<span class="tooltip" title="Jos jotain meni vikaan, voit tyhjentää lomakkeen tästä.">
-				<input type="button" value="Tyhjennä lomake" onclick="refreshPage()" />
+				<input type="button" value="Tyhjennä lomake" onclick="tyhjaaLomake()" />
 			</span>
 		</form>
 		
