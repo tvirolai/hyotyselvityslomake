@@ -45,7 +45,7 @@
 	function doTimer() {
 		if (!timer_is_on) {
 			start = new Date().getTime(); 
-			timer_is_on=1;
+			timer_is_on = 1;
 			timedCount();
 		}
 	}
@@ -54,7 +54,7 @@
 		clearTimeout(t);
 		totaltime += elapsed;
 		document.getElementById('aika').value = totaltime;
-		timer_is_on=0;
+		timer_is_on = 0;
 	}
 
 	function tyhjaaLomake() {
@@ -205,7 +205,7 @@
 			<br />
 
 			<span class="teksti">
-				Kommentti (vapaaehtoinen)
+				Kommentti (vapaaehtoinen):
 			</span>
 			<br />
 			<span class="tooltip" title="Voit liittää halutessasi mukaan kommentteja kuvailemastasi nimekkeestä.">
