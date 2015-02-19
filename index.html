@@ -64,7 +64,18 @@
 	function showElapsed() {
 		alert('Kellon lukema: ' + totaltime + " s.");
 	}
-
+	
+	function validateForm() {
+		var y = document.forms["lomake"]["tapaus"].value;
+		if (y == null || y == "") {
+			alert("Täytä kaikki pakolliset kentät.");
+			return false;
+		}
+		else if (totaltime == null || totaltime == 0) {
+			alert("Muista myös ajanotto. Kellon lukema on nyt 0 s.");
+			return false;
+		}
+	}
 	</script>
 </head>
 
@@ -108,7 +119,7 @@
 
 	<div class="keskusta">
 		
-		<form id="lomake" action="syota.php" method="post">
+		<form id="lomake" action="syota.php" onsubmit="return validateForm()" method="post">
 			<input type="hidden" id="aika" name="aika" />
 			<span class="teksti">
 				Kirjaa tähän tiedot suorittamastasi kuvailutapauksesta.
@@ -121,12 +132,20 @@
 					Aineistotyyppi:<br /><br />
 				</span>
 				<div class="sisennys">
-					<select name="aineisto">
-						<option value="kirja">Kirja-aineisto</option>
-						<option value="musiikkiaanite">Musiikkiäänite</option>
-						<option value="nuottijulkaisu">Nuottijulkaisu</option>
-						<option value="elokuva">Elokuvatallenne</option>
-					</select>
+				<span class="teksti">
+					<input type="radio" name="aineisto" value="Kirja-aineisto">
+						<span class="tooltip" title="Kirja-aineisto: painettu monografia, jolla on oma nimeke.">Kirja-aineisto</span>
+						<br />
+					<input type="radio" name="aineisto" value="Musiikkiäänite">
+						<span class="tooltip" title="Musiikkiäänite: CD, LP, ym.">Musiikkiäänite</span>
+						<br />
+					<input type="radio" name="aineisto" value="Nuottijulkaisu">
+						<span class="tooltip" title="Nuottijulkaisu">Nuottijulkaisu</span>
+						<br />
+					<input type="radio" name="aineisto" value="Elokuvatallenne">
+						<span class="tooltip" title="">Elokuvatallenne</span>
+					<br />
+					</span>
 				</div>
 			</div>
 
