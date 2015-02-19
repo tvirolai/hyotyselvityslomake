@@ -1,8 +1,24 @@
 .teksti {
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-style: normal;
 	font-weight: normal;
-	font-size: 11pt;
+	font-size: 10pt;
+}
+
+a:hover {
+	background-color: yellow;
+	text-decoration: underline;
+}
+
+a:visited {
+	font-style: normal;
+	text-decoration: none;
+	color: #DF7401;
+}
+
+a:link {
+	text-decoration: none;
+	font-style: normal;
 }
 
 h1 {
@@ -13,10 +29,47 @@ h1 {
 	text-align: center;
 	color: #5F0909;
 }
+
+.valiotsikko {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10pt;
+	color: red;
+}
+
+.kehys {
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 15px;
+	padding-right: 25px;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 1px;
+	border: 1px solid red;
+}
+
+.kehys_vapaaehtoinen {
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 15px;
+	padding-right: 25px;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 1px;
+	border: 1px solid gray;
+}
+
+.sisennys {
+	padding-left: 50px;
+}
+
 .showhide {
 	color: red;
 	display: none;	
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 11pt;
@@ -25,7 +78,7 @@ h1 {
 .showhide2 {
 	color: blue;
 	display: none;	
-	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family: "Helvetica Neue", Arial, sans-serif;
 	font-style: normal;
 	font-weight: normal;
 	font-size: 11pt;
@@ -53,7 +106,7 @@ img {
 	margin-left: auto;
 }
 
-#keskusta {
+.keskusta {
 	margin-left: auto;
 	margin-right: auto;
 	border-radius: 2px;
@@ -66,6 +119,23 @@ img {
 	padding-right: 25px;
 	border-radius: 5px;
 }
+
+ol {
+	font-family: "Helvetica Neue", Arial, sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10pt;
+    list-style-type: decimal;
+    padding: 10px;
+    margin: 10px;
+}
+
+ol li {
+    padding-left: 1px; 
+    padding-top: 3px;
+}
+
+
 .ui-tooltip {
 	padding: 8px;
 	position: absolute;
@@ -106,13 +176,6 @@ body .ui-tooltip {
 	margin-left: 4px;
 }
 
-
-
-
-
-
-
-
 /* This is the base styling required to make all Tooltipsters work */
 .tooltipster-base {
 	padding: 0;
@@ -129,7 +192,6 @@ body .ui-tooltip {
 .tooltipster-base .tooltipster-content {
 	overflow: hidden;
 }
-
 
 /* These next classes handle the styles for the little arrow attached to the tooltip. By default, the arrow will inherit the same colors and border as what is set on the main tooltip itself. */
 .tooltipster-arrow {

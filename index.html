@@ -66,13 +66,14 @@
 	}
 	
 	function validateForm() {
+		var x = document.forms["lomake"]["aineisto"].value;
 		var y = document.forms["lomake"]["tapaus"].value;
-		if (y == null || y == "") {
+		if (x == null || x == "" || y == null || y == "") {
 			alert("Täytä kaikki pakolliset kentät.");
 			return false;
 		}
 		else if (totaltime == null || totaltime == 0) {
-			alert("Muista myös ajanotto. Kellon lukema on nyt 0 s.");
+			alert("Muista myös ajanotto. Kellon lukema on nyt tyhjä.");
 			return false;
 		}
 	}
@@ -143,7 +144,7 @@
 						<span class="tooltip" title="Nuottijulkaisu">Nuottijulkaisu</span>
 						<br />
 					<input type="radio" name="aineisto" value="Elokuvatallenne">
-						<span class="tooltip" title="">Elokuvatallenne</span>
+						<span class="tooltip" title="DVD, Blu-Ray">Elokuvatallenne</span>
 					<br />
 					</span>
 				</div>
