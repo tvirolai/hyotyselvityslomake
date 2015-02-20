@@ -39,7 +39,7 @@
 		var time = new Date().getTime() - start;
 		elapsed = Math.floor(time / 100) / 10; 
 		document.getElementById('txt').value = elapsed;
-		t=setTimeout("timedCount()", 1000);
+		t=setTimeout('timedCount()', 100);
 	}
 
 	function doTimer() {
@@ -52,30 +52,30 @@
 
 	function stopCount() {
 		clearTimeout(t);
-		totaltime += elapsed;
+		totaltime += Math.round(elapsed);
 		document.getElementById('aika').value = totaltime;
 		timer_is_on = 0;
 	}
 
 	function tyhjaaLomake() {
-		document.getElementById("lomake").reset();
+		document.getElementById('lomake').reset();
 		totaltime = 0;
 		location.reload();
 	}
 
 	function showElapsed() {
-		alert('Kellon lukema: ' + totaltime + " s.");
+		alert('Kellon lukema: ' + totaltime + ' s.');
 	}
 	
 	function validateForm() {
 		var x = $("[name='aineisto']:checked").val();
 		var y = $("[name='tapaus']:checked").val();
 		if (x == null || x == "" || y == null || y == "") {
-			alert("Täytä kaikki pakolliset kentät.");
+			alert('Täytä kaikki pakolliset kentät.');
 			return false;
 		}
 		else if (totaltime == null || totaltime == 0) {
-			alert("Muista myös ajanotto. Kellon lukema on nyt tyhjä.");
+			alert('Muista myös ajanotto. Kellon lukema on nyt tyhjä.');
 			return false;
 		}
 	}
