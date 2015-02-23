@@ -16,6 +16,9 @@
     <span class="teksti">
       <br />
       <?php
+	  $aika = time();
+	  $aikaleima = (date("Y-m-d h:i:s", $aika));
+
       $aineisto = $_POST["aineisto"];
       $tapaus = $_POST["tapaus"];
       $osakohteet = $_POST["osakohteet"];
@@ -32,7 +35,7 @@
      if(!$db) {
       echo $this->lastErrorMsg()."<br />\n";
     } else {
-      $sql="INSERT INTO tietueet (AINEISTO, TAPAUS, OSAKOHTEET, AIKA, KOMMENTTI) values ('$aineisto', '$tapaus', '$osakohteet', '$aika', '$kommentti');";
+      $sql="INSERT INTO tietueet (AINEISTO, TAPAUS, OSAKOHTEET, AIKA, KOMMENTTI, AIKALEIMA) values ('$aineisto', '$tapaus', '$osakohteet', '$aika', '$kommentti', '$aikaleima');";
       $ret = $db->exec($sql);
       if(!$ret){
         echo $db->lastErrorMsg(); echo "<br>\n";
