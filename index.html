@@ -64,8 +64,13 @@
 	}
 
 	function showElapsed() {
-		alert('Kellon lukema: ' + totaltime + ' s.');
-	}
+		var minuutit = Math.floor(totaltime / 60);
+		var sekunnit = (totaltime - minuutit * 60);
+		if (minuutit > 0) {
+			alert('Kellon lukema: ' + minuutit + ' minuutttia ' + sekunnit + ' sekuntia.');
+			} else { alert('Kellon lukema: ' + totaltime + ' s.');
+		}
+	}	
 	
 	function validateForm() {
 		var x = $("[name='aineisto']:checked").val();

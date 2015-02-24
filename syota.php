@@ -17,7 +17,7 @@
       <br />
       <?php
 	  $aika = time();
-	  $aikaleima = (date("Y-m-d h:i:s", $aika));
+	  $aikaleima = (date("Y-m-d H:i:s", $aika));
 
       $aineisto = $_POST["aineisto"];
       $tapaus = $_POST["tapaus"];
@@ -44,7 +44,7 @@
       }
       $sql="SELECT COUNT(*) FROM tietueet";
       $count = $db->querySingle($sql);
-      echo "Tietoja on nyt syötetty yhteensä $count tietueesta.";
+      echo "Syötettyjen tietueiden määrä on nyt $count.";
       $db->close();
     }
     ?>
