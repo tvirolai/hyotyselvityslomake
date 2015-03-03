@@ -41,8 +41,9 @@ class Processor(object):
 			print key
 			print "TAPAUKSIA: " + str(tilasto[key][0]) + " (" + str(round(float(tilasto[key][0]) / total * 100, 1)) + " %)"
 			print "KESKIARVO: " + str(self.calculate(tilasto[key][1]))
-			print "MINIMI: " + str(self.calculate(tilasto[key][2]))
-			print "MAKSIMI: " + str(self.calculate(tilasto[key][3]))
+			if ((tilasto[key][0]) > 1):
+				print "MINIMI: " + str(self.calculate(tilasto[key][2]))
+				print "MAKSIMI: " + str(self.calculate(tilasto[key][3]))
 			print "================"
 
 	# Muuttaa sekunteina annetun luvun muotoon hh:mm:ss
