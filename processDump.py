@@ -1,55 +1,67 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*
 
-import sys, datetime, csv
+import sys, datetime, csv, argparse
 
-def read(dumppi):
-	with open(dumppi, 'rb') as file:
-		lista = list(csv.reader(file))
-	return lista
+class Processor(object):
 
-def tulosta(lista):
-	tilasto = {}
-	total = 0
-	for line in lista:
-		aika = calculate(int(line[4]))
-		print "ID: %s \nAINEISTO: %s \nTAPAUS: %s \nOSAKOHTEET: %s \nAIKA: %s \nKOMMENTTI: %s \nAIKALEIMA: %s" \
-		% (line[0], line[1], line[2], line[3], aika, line[5], line[6])
-		print "================"
+	def __init__(self, dumppi):
 
-		if (line[3] != ""):
-			tapaus = line[1] + " : " + line[2] + " : " + line[3]
-		else:
-			tapaus = line[1] + " : " + line[2] + " : (ei osakohteita)"
+		with open(dumppi, 'rb') as file:
+			self.lista = list(csv.reader(file))
+		
+	def tulosta(self):
 
-		sekunnit = int(line[4])
+		for line in self.lista:
+			aika = self.calculate(int(line[4]))
+			print "ID: %s \nAINEISTO: %s \nTAPAUS: %s \nOSAKOHTEET: %s \nAIKA: %s \nKOMMENTTI: %s \nAIKALEIMA: %s" \
+			% (line[0], line[1], line[2], line[3], aika, line[5], line[6])
+			print "================"
 
-		total += 1
+	def tilastot(self):
+		tilasto = {}
+		total = 0
+		for line in self.lista:			
+			if (line[3] != ""):
+				tapaus = line[1] + " : " + line[2] + " : " + line[3]
+			else:
+				tapaus = line[1] + " : " + line[2] + " : (ei osakohteita)"
 
-		if not tapaus in tilasto:
-			tilasto[tapaus] = [1, sekunnit, sekunnit, sekunnit, sekunnit] # määrä, keskiarvo, minimi, maksimi, summa
-		else:
-			tilasto[tapaus][0] += 1
-			tilasto[tapaus][4] += sekunnit
-			tilasto[tapaus][1] = tilasto[tapaus][4] / tilasto[tapaus][0]
-			if (sekunnit < tilasto[tapaus][2]):
-				tilasto[tapaus][2] = sekunnit
-			if (sekunnit > tilasto[tapaus][3]):
-				tilasto[tapaus][3] = sekunnit
+			sekunnit = int(line[4])
+			total += 1
 
-	for key in sorted(tilasto):
-		print key
-		print "TAPAUKSIA: " + str(tilasto[key][0]) + " (" + str(round(float(tilasto[key][0]) / total * 100, 1)) + " %)"
-		print "KESKIARVO: " + str(calculate(tilasto[key][1]))
-		print "MINIMI: " + str(calculate(tilasto[key][2]))
-		print "MAKSIMI: " + str(calculate(tilasto[key][3]))
-		print "================"
+			if not tapaus in tilasto:
+				tilasto[tapaus] = [1, sekunnit, sekunnit, sekunnit, sekunnit] # määrä, keskiarvo, minimi, maksimi, summa
+			else:
+				tilasto[tapaus][0] += 1
+				tilasto[tapaus][4] += sekunnit
+				tilasto[tapaus][1] = tilasto[tapaus][4] / tilasto[tapaus][0]
+				if (sekunnit < tilasto[tapaus][2]):
+					tilasto[tapaus][2] = sekunnit
+				if (sekunnit > tilasto[tapaus][3]):
+					tilasto[tapaus][3] = sekunnit
 
-def calculate(rivi):
-	value = str(datetime.timedelta(seconds=rivi))
-	return value
+		for key in sorted(tilasto):
+			print key
+			print "TAPAUKSIA: " + str(tilasto[key][0]) + " (" + str(round(float(tilasto[key][0]) / total * 100, 1)) + " %)"
+			print "KESKIARVO: " + str(self.calculate(tilasto[key][1]))
+			print "MINIMI: " + str(self.calculate(tilasto[key][2]))
+			print "MAKSIMI: " + str(self.calculate(tilasto[key][3]))
+			print "================"
+
+	# Muuttaa sekunteina annetun luvun muotoon hh:mm:ss
+	def calculate(self, rivi):
+		value = str(datetime.timedelta(seconds=rivi))
+		return value
 
 if __name__ == '__main__':
-	dumppi = sys.argv[1]
-	tiedosto = read(dumppi)
-	tulosta(tiedosto)
+	parser = argparse.ArgumentParser(description="CSV dump processor")
+	parser.add_argument("tiedosto", help="File to process.")
+	parser.add_argument("-p", "--printout", help="Print dump contents in readable form.", action='store_true')
+	parser.add_argument("-r", "--report", help="Print a statistical report of dump contents.", action='store_true')
+	args = parser.parse_args()
+	processor = Processor(args.tiedosto)
+	if args.printout:
+		processor.tulosta()
+	if args.report:
+		processor.tilastot()
