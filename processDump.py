@@ -36,7 +36,9 @@ class Processor(object):
 					tilasto[tapaus][2] = sekunnit
 				if (sekunnit > tilasto[tapaus][3]):
 					tilasto[tapaus][3] = sekunnit
-					
+		
+		print "SYÖTETTYJÄ TIETUEITA: %d\nERILAISIA KUVAILUTAPAUKSIA: %d\n" % ( total, len(tilasto) )
+
 		for key in sorted(tilasto):
 			print key
 			print "TAPAUKSIA: " + str(tilasto[key][0]) + " (" + str(round(float(tilasto[key][0]) / total * 100, 1)) + " %)"
