@@ -15,16 +15,17 @@
 			theme: 'tooltipster-shadow'});
 
 		$( "#start" ).click(function() {
-			$( ".showhide" ).first().show( "fast" );
-			$( ".showhide2" ).hide( 100 );
+			$( ".showhide" ).show();
+			$( ".showhide2" ).hide();
 		});
 
 		$( "#stop" ).click(function() {
-			$( ".showhide" ).hide( 100 );
-			$( ".showhide2" ).first().show( "fast" );
+			$( ".showhide" ).hide();
+			$( ".showhide2" ).show();
 		});
 
 	});
+
 	</script>
 
 	<script type="text/javascript">
@@ -194,17 +195,15 @@
 				</span>
 					<div class="sisennys">
 						<span class="teksti">
-						<input type="radio" name="osakohteet" value="Osakohteiden primaariluettelointi">
-						<span class="tooltip" title="Primaariluetteloidulle tai poimitulle tietueelle lisätään myös osakohteet, joita tietueella ei aiemmin ole.">Osakohteiden primaariluettelointi</span>
-						<br />
-						<input type="radio" name="osakohteet" value="Osakohteiden poiminta sellaisenaan">
-						<span class="tooltip" title="Poimitun tietueen mukana tulevat osakohteet ovat sellaisenaan käyttökelpoisia myös omalle kirjastolle.">Osakohteiden poiminta sellaisenaan</span>
-						<br />
-						<input type="radio" name="osakohteet" value="Osakohteiden poiminta muokaten">
-						<span class="tooltip" title="Poimitun tietueen mukana tulevia osakohteita joudutaan muokkaamaan, ennen kuin ne ovat käyttökelpoisia myös omalle kirjastolle.">Osakohteiden poiminta muokaten (lisätty sisällönkuvailu, tehty korjauksia)</span>
+
+						<select name="osakohteet">
+							<option value="" selected>(ei osakohteita)</option>
+							<option value="Osakohteiden primaariluettelointi">Osakohteiden primaariluettelointi</option>
+							<option value="Osakohteiden poiminta sellaisenaan">Osakohteiden poiminta sellaisenaan</option>
+							<option value="Osakohteiden poiminta muokaten">Osakohteiden poiminta muokaten</option>
+						</select>
 					</span>
 					</div>
-			
 			</div>
 
 			<br />
