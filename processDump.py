@@ -39,13 +39,14 @@ class Processor(object):
 		
 		print "SYÖTETTYJÄ TIETUEITA: %d\nERILAISIA KUVAILUTAPAUKSIA: %d\n" % ( total, len(tilasto) )
 
-		for key in sorted(tilasto):
-			print key
-			print "TAPAUKSIA: " + str(tilasto[key][0]) + " (" + str(round(float(tilasto[key][0]) / total * 100, 1)) + " %)"
-			print "KESKIARVO: " + str(self.calculate(tilasto[key][1]))
-			if ((tilasto[key][0]) > 1):
-				print "MINIMI: " + str(self.calculate(tilasto[key][2]))
-				print "MAKSIMI: " + str(self.calculate(tilasto[key][3]))
+		# Tulostetaan kuvailutapaukset yleisimmästä alkaen.
+		for key in sorted(tilasto.items(), key=lambda x: x[1][0], reverse=True):
+			print key[0]
+			print "TAPAUKSIA: " + str(key[1][0]) + " (" + str(round(float(key[1][0]) / total * 100, 1)) + " %)"
+			print "KESKIARVO: " + str(self.calculate(key[1][1]))
+			if ((key[1][0]) > 1):
+				print "MINIMI: " + str(self.calculate(key[1][2]))
+				print "MAKSIMI: " + str(self.calculate(key[1][3]))
 			print "================"
 
 	# Muuttaa sekunteina annetun luvun muotoon hh:mm:ss
