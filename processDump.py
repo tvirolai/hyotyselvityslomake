@@ -31,7 +31,7 @@ class Processor(object):
 			else:
 				tilasto[tapaus][0] += 1
 				tilasto[tapaus][4] += sekunnit
-				tilasto[tapaus][1] = tilasto[tapaus][4] / tilasto[tapaus][0]
+				tilasto[tapaus][1] = int(round(float(tilasto[tapaus][4]) / tilasto[tapaus][0]))
 				if (sekunnit < tilasto[tapaus][2]):
 					tilasto[tapaus][2] = sekunnit
 				if (sekunnit > tilasto[tapaus][3]):
